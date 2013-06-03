@@ -1,0 +1,29 @@
+public function pushToLog($message, $type=E_NOTICE, $writeToLog=false, $addbreak=true, $append=false){
+	
+	// ==============================================================
+	// Start Exception logger
+	// ==============================================================
+		require_once(EXTENSIONS . '/exception_notifier/lib/class.logexception.php');
+		if (class_exists('LogException') 
+			&& ($type == E_ERROR || $type == E_USER_ERROR || $this->__defineNameString($type) == 'UNKNOWN')) {
+			
+			LogException::log($message, $this->__defineNameString($type));
+		}
+	// ==============================================================
+	// End Exception logger
+	// ==============================================================
+	
+
+	if($append){
+			$this->_log[count($this->_log) - 1]['message'] =  $this->_log[count($this->_log) - 1]['message'] . $message;
+		}
+		else{
+			array_push($this->_log, array('type' => $type, 'time' => time(), 'message' => $message));
+			$message = DateTimeObj::get($this->_datetime_format) . ' > ' . $this->__defineNameString($type) . ': ' . $message;
+		}
+		
+		if($writeToLog) $this->writeToLog($message, $addbreak);
+
+	}
+		
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="exception_notifier" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Airbrake Exception Notifier</name>
+	<description>Pushes any exceptions in the log to an Airbrake service.</description>
+	<repo type="github">https://github.com/korelogic/exception_notifier</repo>
+	<types>
+		<type>Field</type>
+	</types>
+	<authors>
+		<author>
+			<name github="korelogic" symphony="Korelogic">Michael Hay</name>
+			<website>http://korelogic.co.uk</website>
+		</author>
+	</authors>
+	<releases>
+		<release version="1.0" date="2013-06-03" min="2.2.2" max="2.2.x">
+			- Initial release
+		</release>
+	</releases>
+</extension>
